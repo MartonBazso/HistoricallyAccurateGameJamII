@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
+[ext_resource path="res://ButtonSample.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/wasd.png" type="Texture" id=3]
+[ext_resource path="res://Assets/mouse.png" type="Texture" id=4]
+[ext_resource path="res://TitleSample.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/ComicNeue-Bold.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_right = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Next" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -282.796
+margin_top = -149.367
+margin_right = 274.204
+margin_bottom = -34.3674
+text = "BACK"
+
+[node name="wasd" type="Sprite" parent="."]
+position = Vector2( 318.923, 178.848 )
+texture = ExtResource( 3 )
+
+[node name="mouse" type="Sprite" parent="."]
+position = Vector2( 782.51, 188.066 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.3926
+margin_top = 91.1528
+margin_right = -963.607
+margin_bottom = -478.847
+rect_scale = Vector2( 2.56097, -2.2845 )
+
+[node name="esc" parent="." instance=ExtResource( 5 )]
+margin_left = 15.7618
+margin_top = 28.6825
+margin_right = -903.238
+margin_bottom = 87.6825
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "esc"
+
+[node name="movement" parent="." instance=ExtResource( 5 )]
+margin_left = 232.253
+margin_top = 350.0
+margin_right = -617.747
+margin_bottom = 409.0
+custom_fonts/font = SubResource( 1 )
+text = "movement"
+
+[node name="movement2" parent="." instance=ExtResource( 5 )]
+margin_left = 15.8999
+margin_top = 99.805
+margin_right = -895.1
+margin_bottom = 158.805
+custom_fonts/font = SubResource( 1 )
+text = "pause"
+
+[node name="camera" parent="." instance=ExtResource( 5 )]
+margin_left = 696.213
+margin_top = 350.0
+margin_right = -153.787
+margin_bottom = 409.0
+custom_fonts/font = SubResource( 1 )
+text = "camera"
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]

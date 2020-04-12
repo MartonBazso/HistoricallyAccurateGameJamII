@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Sounds/village-sounds.ogg" type="AudioStream" id=1]
+
+[node name="VillageSoundsPlayer" type="AudioStreamPlayer3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.238, -85.0808 )
+stream = ExtResource( 1 )
+unit_db = 42.569
+autoplay = true

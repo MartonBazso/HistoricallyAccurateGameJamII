@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Human.gd" type="Script" id=1]
+[ext_resource path="res://Monk.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sounds/SnowWalk2.ogg" type="AudioStream" id=3]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.81138, 5.18167, 1.59232 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.84684, 5.5348, 1 )
+
+[node name="Human" type="KinematicBody"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 1 )
+
+[node name="Monk" parent="." instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.16134, 0 )
+
+[node name="Indicator" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, -3.21236, 0 )
+layers = 2
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 4.805
+autoplay = true
+max_distance = 150.0
+doppler_tracking = 2
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.956368, 0.292166, 0, -0.292166, 0.956368, 0, 11.3109, 16.2565 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
